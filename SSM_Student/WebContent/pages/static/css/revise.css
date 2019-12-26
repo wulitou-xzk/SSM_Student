@@ -1,0 +1,54 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+body{
+	background: url(../img/public.jpg) no-repeat;
+	background-size: 100%;
+}
+table{
+	border-collapse: collapse;
+	font-size: 18px;
+	margin-bottom: 15px;
+	margin: 50px auto;
+}
+th{
+	font-weight: 400;
+	color: brown;
+}
+td,th{
+	border: solid 1px black;
+	height: 25px;
+	line-height: 25px;
+	width: 90px;
+	padding-right: 7px;
+}
+.pages{
+	margin-left:350px;
+	margin-top: 10px;
+}
+#notchoice{
+	margin-left: 600px;
+	font-size: 40px;
+	position: fixed;
+	top: 300px;
+}
+#back{
+	margin-left: 900px;
+	font-size: 20px;
+	position: fixed;
+	right: 200px;
+	top: 360px;
+}
+#fanhui{
+	display: block;
+	margin-left: 1150px;
+	margin-top: -50px;
+	font-size: 20px;
+}
+h2{
+	margin-top: 50px;
+	font-size: 35px;
+	font-weight:400;
+	text-align: center;
+}

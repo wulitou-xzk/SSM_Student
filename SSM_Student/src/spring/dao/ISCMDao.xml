@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="spring.dao.ISCMDao">
+	<insert id="insertSCM">
+		INSERT INTO stu_col_maj(stuNumber,colId,majorId) 
+		VALUES(#{stuNumber},#{colId},#{majorId})
+	</insert>
+	
+	<delete id="deleteSCM">
+		DELETE FROM stu_col_maj 
+		WHERE stuNumber=#{number}
+	</delete>
+	
+	<update id="updateSCM">
+		UPDATE stu_col_maj
+		SET colId=#{colId},majorId=#{majorId}
+		WHERE stuNumber=#{stuNumber}
+	</update>
+	
+	<select id="selectSCMByNumber" resultType="spring.beans.SCM">
+		SELECT colId,majorId FROM stu_col_maj
+		WHERE stuNumber=#{number}
+	</select>
+	
+</mapper>

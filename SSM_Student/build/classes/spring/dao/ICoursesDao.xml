@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="spring.dao.ICoursesDao">
+	
+	<insert id="addCourse">
+		INSERT INTO courses(cname,clock,coId) 
+		VALUES(#{cname},#{clock},#{coId})
+	</insert>
+	
+	<delete id="deleteCourseById">
+		DELETE FROM courses WHERE id=#{id}
+	</delete>
+	
+	<update id="updateCourse">
+		UPDATE courses SET cname=#{cname},coId=#{coId}
+		WHERE id=#{id}	
+	</update>
+	
+	<update id="updateAllLock">
+		UPDATE courses SET clock=#{clock}
+	</update>
+	
+	<update id="updateLock">
+		UPDATE courses SET clock=#{clock} WHERE id=#{id}
+	</update>
+	
+	<select id="selectCourseByName" resultType="spring.beans.Courses">
+		SELECT c.id,c.cname,c.clock,c.coId,col.college 
+		FROM courses c,colleges col 
+		WHERE c.coId=col.id AND c.cname=#{cname}
+	</select>
+	
+ 	<select id="selectCourseById" resultType="spring.beans.Courses">
+		SELECT c.id,c.cname,c.clock,c.coId,co.college 
+		FROM courses c,college co
+		WHERE c.coId=co.id AND c.id=#{id}
+	</select>
+	
+	<select id="selectByCoId" resultType="spring.beans.Courses">
+		SELECT c.cname,c.clock,c.coId
+		FROM courses c
+		WHERE c.coId=#{coId}
+	</select>
+	
+	<select id="findAllCourse" resultType="spring.beans.Courses">
+		SELECT c.id,c.cname,c.clock,c.coId,co.college 
+		FROM courses c,colleges co
+		WHERE c.coId=co.id
+	</select>
+	
+	<select id="Count" resultType="int">
+		SELECT COUNT(id) 
+		FROM courses
+	</select>
+	
+	<select id="selectCourseByPage" resultType="spring.beans.Courses">
+		SELECT c.id,c.cname,c.clock,c.coId,co.college 
+		FROM courses c,colleges co
+		WHERE c.coId=co.id LIMIT #{begin},5
+	</select>
+	
+</mapper>

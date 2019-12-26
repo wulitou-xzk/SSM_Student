@@ -1,0 +1,13 @@
+/*
+* @Author: Administrator
+* @Date:   2019-06-28 18:44:09
+* @Last Modified by:   Administrator
+* @Last Modified time: 2019-06-28 18:56:53
+*/
+table tr.option td:nth-child(n+8){
+	border-color:#fff;
+	border-bottom-color:#000;
+}
+table tr.option td:last-child{
+	border-right-color:#000;
+}

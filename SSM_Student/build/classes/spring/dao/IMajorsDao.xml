@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="spring.dao.IMajorsDao">
+
+	<select id="selectMajorIdByName" resultType="spring.beans.Majors">
+		SELECT * FROM majors WHERE major=#{major}
+	</select>
+	
+	<select id="selectMajorById" resultType="spring.beans.Majors">
+		SELECT * FROM majors WHERE id=#{majorId}
+	</select>
+	
+	<select id="selectAllMajors" resultType="spring.beans.Majors">
+		SELECT * FROM majors
+	</select>
+	
+	<select id="selectMajorByColId" resultType="spring.beans.Majors">
+		SELECT * FROM majors WHERE collegeId=#{collegeId}
+	</select>
+</mapper>

@@ -1,0 +1,36 @@
+body{
+	/* height: 80%; */
+}
+table{
+	width:100%;
+	height:110%;
+	border-collapse:collapse;
+	font-weight:400;
+}
+table tr td:first-child{
+	width:25%;
+	text-align:center;
+}
+table td{
+	height:40px;
+	border:2px solid #8fbc8fa8;
+	padding:0;
+}
+table td input{
+	height:100%;
+	width: 40%;
+}
+form>input{
+	width: 150px;
+	height: 35px;
+	margin:10px 400px;
+	margin-bottom:0px;
+}
+
+/* 鼠标移动处的动态功能 */
+table tr:hover{
+	background:#8fbc8fa8;
+}
+table  tr.active{
+	background:#8fbc8fa8;
+}

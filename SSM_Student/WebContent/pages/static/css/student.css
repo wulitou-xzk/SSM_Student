@@ -1,0 +1,102 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+body{
+	background-color: skyblue;
+	position: relative;
+}
+#body{
+	width: 95%;
+	height:455px;
+	margin: 55px auto;
+	border-radius: 10px;
+	background: url(../img/new6.jpg) no-repeat;
+	background-size: 100% 100%;
+	position: relative;
+}
+h3{
+	margin: 30px 450px;
+	font-size: 45px;
+	font-weight: 400;
+	color: #4682B4;
+}
+#name,#back{
+	position: absolute;
+	top: 65px;
+	font-size: 20px;
+}
+#name{
+	right: 200px;
+}
+#text{
+	float: right;
+	right: 150px;
+	width: 80px;
+	height: 23px;
+	line-height: 23px;
+	border: 1px solid white;
+	border-radius: 4px;
+	padding-left: 10px;
+}
+#back{
+	right: 100px;
+}
+#back > a{
+	text-decoration: none;
+	}
+#back > a:hover{
+	color: brown;
+}
+.left{
+	height: 330px;
+	width: 15%;
+	box-sizing: border-box;
+	border: 3px solid cornflowerblue;
+	margin-top: 10px;
+	background-color: antiquewhite;
+	border-radius: 13px;
+}
+.title{
+	width: 100%;
+	height: 45px;
+	box-sizing: border-box;
+	padding: 5px 25px;
+	background-color: #4682B4;
+	font-size: 25px;
+	color: white;
+}
+.chose{
+	height: 50px;
+	width: 90%;
+	border-radius: 20px;
+	margin: 15px 6px;
+	padding: 10px 25px;
+	background-color: lightgoldenrodyellow;
+	box-sizing: border-box;
+}
+.chose > a {
+	text-decoration: none;
+	display: block;
+	width: 100%;
+	height: 100%;
+}
+.chose:hover{
+	border: 5px solid #4682B4;
+}
+.right{
+	position: absolute;
+	height: 330px;
+	width: 850px;
+	top: 10px;
+	left: 225px;
+	border-radius: 10px;
+}
+
+/*.include{
+	height: 330px;
+	width: 850px;
+	background-size: 95%;
+	background-position: -190px -150px;
+}
+*/

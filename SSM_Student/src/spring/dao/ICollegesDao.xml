@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="spring.dao.ICollegesDao">
+
+	<resultMap type="spring.beans.Colleges" id="collMap">
+		<id column="id" property="id"/>
+		<result column="college" property="college"/>
+	</resultMap>
+
+	<select id="selectCollegeByName" resultMap="collMap">
+		SELECT id,college FROM colleges WHERE college=#{college}
+	</select>
+	
+	<select id="selectCollegeById" resultMap="collMap">
+		SELECT college FROM colleges WHERE id=#{colId}
+	</select>
+	
+	<select id="selectAllColleges" resultMap="collMap">
+		SELECT * FROM colleges
+	</select>
+</mapper>

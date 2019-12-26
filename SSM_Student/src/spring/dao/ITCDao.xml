@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="spring.dao.ITCDao">
+
+	<insert id="insertTC">
+		INSERT INTO teach_course(teachId,courseId,number,maxnumber,place,day,time,week) 
+		VALUES(#{teachId},#{courseId},#{number},#{maxnumber},#{place},#{day},#{time},#{week})
+	</insert>
+	
+	<delete id="deleteTCById">
+		DELETE FROM teach_course
+		WHERE id=#{id}
+	</delete>
+	
+	<delete id="deleteTCByCid">
+		DELETE FROM teach_course
+		WHERE courseId=#{courseId}
+	</delete>
+	
+	<update id="updateTC">
+		UPDATE teach_course 
+		SET teachId=#{teachId},courseId=#{courseId},number=#{number},maxnumber=#{maxnumber},place=#{place},day=#{day},time=#{time},week=#{week} 
+		WHERE teachId=#{teachId}
+	</update>
+	
+	<update id="updateNumberByTidCid">
+		UPDATE teach_course 
+		SET number=#{number}
+		WHERE teachId=#{teachId} AND courseId=#{courseId}
+	</update>
+	
+	<select id="selectTCByTid" resultType="spring.beans.Teach_course">
+		SELECT c.cname,tc.id,tc.teachId,tc.courseId,tc.number,tc.maxnumber,tc.place,tc.time,tc.day,tc.week,t.t_name,t.t_number,col.college 
+		FROM courses c,teach_course tc,teachers t,colleges col 
+		WHERE c.coId=col.id AND tc.teachId=t.id AND tc.courseId=c.id AND tc.teachId=#{teachId}
+	</select>
+	
+	<select id="selectTCByTidCid" resultType="spring.beans.Teach_course">
+		SELECT * FROM teach_course 
+		WHERE teachId=#{teachId} AND courseId=#{courseId}
+	</select>
+	
+	<select id="selectAllTC" resultType="spring.beans.Teach_course">
+		SELECT tc.id,tc.teachId,tc.courseId,tc.number,tc.maxnumber,tc.place,tc.day,tc.time,tc.week,c.cname,t.t_name,co.college 
+		FROM teach_course tc,courses c,teachers t,colleges co 
+		WHERE tc.teachId=t.id AND tc.courseId=c.id AND co.id=t.collId
+	</select>
+	
+	<select id="selectCourseByTid" resultType="spring.beans.Teach_course">
+		SELECT c.cname,tc.courseId,tc.number 
+		FROM courses c,teach_course tc 
+		WHERE tc.courseId=c.id AND tc.teachId=#{teachId}
+	</select>
+	
+	<select id="selectTCByPage" resultType="spring.beans.Teach_course">
+		SELECT tc.id,tc.teachId,tc.courseId,tc.number,tc.maxnumber,tc.place,tc.day,tc.time,tc.week,c.cname,t.t_name,co.college 
+		FROM teach_course tc,courses c,teachers t,colleges co 
+		WHERE tc.teachId=t.id AND tc.courseId=c.id AND co.id=t.collId LIMIT #{begin},5
+	</select>
+	
+</mapper>

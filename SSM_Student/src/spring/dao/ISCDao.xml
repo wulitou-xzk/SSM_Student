@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="spring.dao.ISCDao">
+
+	<!-- 对选课进行数据库操作 -->
+	<insert id="insertSC">
+		INSERT INTO stu_course(sid,cid,tid,score) VALUES(#{sid},#{cid},#{tid},#{score})
+	</insert>
+
+	<delete id="deleteSC">
+		DELETE FROM stu_course
+		WHERE sid=#{sid}
+	</delete>
+	
+	<delete id="deleteSCBySidCid">
+		DELETE FROM stu_course
+		WHERE cid=#{cid} AND sid=#{sid}
+	</delete>
+	
+	<delete id="deleteSCByCid">
+		DELETE FROM stu_course
+		WHERE cid=#{cid}
+	</delete>
+	
+	<update id="updateSC">
+		UPDATE stu_course 
+		SET cid=#{cid},score=#{score} 
+		WHERE sid=#{sid} AND cid=#{cid}
+	</update>
+	
+	<select id="selectRevisedCourses" resultType="spring.beans.Student_Course">
+		SELECT sc.id,sc.tid,sc.sid,sc.cid,sc.score,c.cname,co.college,t.t_name
+		FROM courses c,stu_course sc,colleges co,teachers t
+		WHERE c.id=sc.cid AND c.coId=co.id AND sc.tid=t.id AND sc.sid=#{sid}
+	</select>
+	
+	<select id="selectBySidCid" resultType="spring.beans.Student_Course">
+		SELECT * FROM stu_course WHERE sid=#{sid} AND cid=#{cid}
+	</select>
+	
+	<select id="countRevised"  resultType="int">
+		SELECT COUNT(sid) FROM stu_course WHERE sid=#{sid} AND score=0
+	</select>
+	
+</mapper>

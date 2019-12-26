@@ -1,0 +1,12 @@
+/*
+* @Author: Administrator
+* @Date:   2019-06-28 18:39:11
+* @Last Modified by:   Administrator
+* @Last Modified time: 2019-06-28 18:39:21
+*/
+body.student div:first-child a{
+	height: 40px;
+}
+body.student table td{
+	height:35px;
+}

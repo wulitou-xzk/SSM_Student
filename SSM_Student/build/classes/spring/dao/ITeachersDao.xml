@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="spring.dao.ITeachersDao">
+	<insert id="insertTeacher" parameterType="spring.beans.Teachers">
+		INSERT INTO teachers(t_name,t_gender,t_number,t_phone,collId) 
+		VALUES(#{t_name},#{t_gender},#{t_number},${t_phone},${collId})
+	</insert>
+	
+	<delete id="deleteTeacherById">
+		DELETE FROM teachers 
+		WHERE id=#{id}
+	</delete>
+	
+	<update id="updateTeacher">
+		UPDATE teachers 
+		SET t_name=#{t_name},t_gender=#{t_gender},t_number=#{t_number},t_phone=#{t_phone},collId=#{collId}
+		WHERE id=#{id}
+	</update>
+	
+	<select id="selectAllTeacher" resultType="spring.beans.Teachers">
+		SELECT t.id,t.t_name,t.t_gender,t.t_number,t.t_phone,t.collId,col.college 
+		FROM teachers t,colleges col 
+		WHERE t.collId=col.id AND col.id=#{collId}
+	</select>
+	
+	<select id="selectTeacherByNumber" resultType="spring.beans.Teachers">
+		SELECT t.id,t.t_name,t.t_gender,t.t_number,t.t_phone,t.collId,col.college 
+		FROM teachers t,colleges col 
+		WHERE t.collId=col.id AND t.t_number=#{t_number}
+	</select>
+	
+	<select id="selectTeacherById" resultType="spring.beans.Teachers">
+		SELECT t.id,t.t_name,t.t_gender,t.t_number,t.t_phone,t.collId,col.college 
+		FROM teachers t,colleges col 
+		WHERE t.collId=col.id AND t.id=#{id}
+	</select>
+	
+	<select id="countPhone" resultType="int">
+		SELECT count(t_phone) 
+		FROM teachers 
+		WHERE t_phone=#{t_phone}
+	</select>
+	
+	<select id="selectTeacherByPage" resultType="spring.beans.Teachers">
+		SELECT t.id,t.t_name,t.t_gender,t.t_number,t.t_phone,t.collId,col.college 
+		FROM teachers t,colleges col 
+		WHERE t.collId=col.id AND col.id=#{collId} LIMIT #{begin},5
+	</select>
+	
+</mapper>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration 
+PUBLIC "-//mybatis.org//DTD Config 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<!-- 为实体类指定别名（与其类名相同） -->
+	<typeAliases>
+		<package name="spring.beans"/>
+	</typeAliases>
+	<!-- 注册映射文件（映射文件名称需与dao类名称相同） -->
+	<mappers>
+		<package name="spring.dao"/>
+	</mappers>
+</configuration>

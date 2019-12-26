@@ -1,0 +1,24 @@
+/*
+* @Author: Administrator
+* @Date:   2019-06-28 16:26:24
+* @Last Modified by:   Administrator
+* @Last Modified time: 2019-06-29 18:22:39
+*/
+body{
+	position:relative;
+}
+.bot-paper{
+	position:absolute;
+	bottom:10px;
+	width: 95%;
+	margin:0 auto;
+	display:flex;
+}
+.bot-paper span{
+	display:inline-block;
+	margin:0 20px;
+}
+.skip{
+	display:inline-block;
+	flex:2;
+}

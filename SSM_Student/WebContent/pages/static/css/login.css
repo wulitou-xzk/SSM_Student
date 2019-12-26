@@ -1,0 +1,53 @@
+*{
+	margin:0;
+	padding: 0;
+}
+body{
+	background:url(../img/login.jpg) no-repeat;
+		background-size: 100%;
+		
+	}
+.mian{
+	width: 420px;
+	height: 260px;
+	margin:100px 200px;
+	background-color:#4682B4;
+	border-radius: 15px;
+	box-shadow: 5px 5px 15px white,
+	-5px -5px 15px white;
+	box-sizing: border-box;
+    padding: 60px 50px;
+	}
+.title{
+	margin:65px 70px;
+	font-size: 65px;
+	color:white;
+	font-weight: 500;
+	text-shadow: -3px -3px 2px darkslateblue,
+	-4px -4px 2px darkslateblue,-5px -5px 2px darkslateblue,
+	-6px -6px 2px darkslateblue;
+}
+.mian label{
+	font-size: 23px;
+	color: #FFFACD;
+}
+.mian input{
+	height: 25px;
+	width: 200px;
+	line-height: 25px;
+	border-radius: 5px;
+	padding-left: 10px;
+	margin-bottom: 20px;
+}
+#myPassWord{
+	margin-left: 20px;
+}
+#sub{
+	margin-top: 10px;
+	color: brown;
+	height: 30px;
+	width: 200px;
+	margin-left: 55px;
+	border-radius: 8px;
+	background-color: #FFFACD;
+}

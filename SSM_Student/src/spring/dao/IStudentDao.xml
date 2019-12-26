@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="spring.dao.IStudentDao">
+	<insert id="insertStudent" parameterType="spring.beans.Student">
+		INSERT INTO student(sname,gender,birth,grader,number) 
+		VALUES(#{sname},#{gender},#{birth},${grader},${number})
+	</insert>
+	
+	<delete id="deleteStudentByNumber">
+		delete from student where number=#{number}
+	</delete>
+	
+	<update id="updateStudent">
+		UPDATE student 
+		SET sname=#{sname},gender=#{gender},birth=#{birth},grader=#{grader}
+		WHERE number=#{number}
+	</update>
+	
+	<select id="check" resultType="spring.beans.Student">
+		SELECT number FROM student WHERE number=#{number}
+	</select>
+	
+	<select id="selectStudentByNumber" resultType="spring.beans.Student">
+		SELECT s.id,s.sname,s.gender,s.birth,s.grader,s.number,co.college,m.major 
+		FROM student s,colleges co,majors m,stu_col_maj scm 
+		WHERE s.number=scm.stuNumber AND scm.colId=co.id AND scm.majorId=m.id AND number=#{number}
+	</select>
+	
+	<select id="selectAll" resultType="spring.beans.Student">
+		SELECT id,sname,gender,birth,grader,number FROM student
+	</select>
+	
+	<select id="selectStudentByTidCid" resultType="spring.beans.Student">
+		SELECT s.sname,s.number,s.gender,s.grader,sc.score,co.college,m.major 
+		FROM student s,stu_course sc,colleges co,majors m,teach_course tc,stu_col_maj scm 
+		WHERE s.id=sc.sid AND sc.cid=tc.courseId AND sc.tid=tc.teachId AND scm.stuNumber=s.number AND scm.colId=co.id AND scm.majorId=m.id 
+		AND tc.teachId=#{teachId} AND tc.courseId=#{courseId} AND sc.score&lt;60
+	</select>
+	
+	<select id="selectByPage" resultType="spring.beans.Student">
+		SELECT s.id,s.sname,s.gender,s.birth,s.grader,s.number 
+		FROM student s,stu_col_maj scm
+		WHERE s.number=scm.stuNumber AND scm.colId=#{colId} LIMIT #{begin},5
+	</select>
+	
+	<select id="count" resultType="int">
+		SELECT count(s.id) FROM student s,stu_col_maj scm
+		WHERE scm.stuNumber=s.number AND scm.colId=#{colId}
+	</select>
+	
+	<select id="selectStudentByPage" resultType="spring.beans.Student">
+		SELECT s.sname,s.number,s.gender,s.grader,sc.score,co.college,m.major 
+		FROM student s,stu_course sc,colleges co,majors m,teach_course tc,stu_col_maj scm 
+		WHERE s.id=sc.sid AND sc.cid=tc.courseId AND sc.tid=tc.teachId AND scm.stuNumber=s.number AND scm.colId=co.id AND scm.majorId=m.id 
+		AND tc.teachId=#{teachId} AND tc.courseId=#{courseId} AND sc.score&lt;60 AND scm.colId=#{colId} LIMIT #{begin},5
+	</select>
+	
+</mapper>
